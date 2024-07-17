@@ -2,8 +2,8 @@ class Spam:
     def __getitem__(self, index: int) -> str:
         print("->", index)
         if index == 0:
-            return "spam"
+            return "foo"
         elif index == 1:
-            return "can"
+            return "bar"
         else:
             raise IndexError()
