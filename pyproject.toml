@@ -30,9 +30,9 @@ disable_warnings = [
 ]
 parallel = true
 source_pkgs = [
-    "1iterators",
-    "2generators",
-    "3coroutines",
+    "iterators",
+    "generators",
+    "coroutines",
 ]
 
 [tool.coverage.paths]
@@ -152,9 +152,9 @@ deps =
     mypy
     pytest
 commands =
-    python -m mypy -p 1iterators
-    python -m mypy -p 2generators
-    python -m mypy -p 3coroutines
+    python -m mypy -p iterators
+    python -m mypy -p generators
+    python -m mypy -p coroutines
     python -m mypy --explicit-package-bases tests/
 
 [testenv:ruffformat]
