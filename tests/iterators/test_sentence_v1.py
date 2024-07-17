@@ -1,4 +1,4 @@
-from collections.abc import Iterator
+from collections.abc import Generator, Iterable, Iterator
 
 import pytest
 
@@ -24,6 +24,8 @@ def test_sentence_iterator_independence_in_a_different_way(sentence: Sentence) -
 def test_sentence_iterator_type(sentence: Sentence) -> None:
     it = iter(sentence)
     assert isinstance(it, Iterator)
+    assert isinstance(it, Iterable)
+    assert not isinstance(it, Generator)
 
 
 def test_sentence_iterator_manually_using_next(sentence: Sentence) -> None:

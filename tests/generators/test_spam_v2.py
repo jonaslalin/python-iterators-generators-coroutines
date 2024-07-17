@@ -1,6 +1,6 @@
 import pytest
 
-from iterators.spam import Spam
+from generators.spam_v2 import Spam
 
 
 @pytest.fixture

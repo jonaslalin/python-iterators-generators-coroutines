@@ -2,7 +2,7 @@ from collections.abc import Generator, Iterable, Iterator
 
 import pytest
 
-from iterators.sentence_v2 import Sentence, SentenceIterator
+from generators.sentence_v3 import Sentence
 
 
 @pytest.fixture
@@ -25,8 +25,7 @@ def test_sentence_iterator_type(sentence: Sentence) -> None:
     it = iter(sentence)
     assert isinstance(it, Iterator)
     assert isinstance(it, Iterable)
-    assert isinstance(it, SentenceIterator)
-    assert not isinstance(it, Generator)
+    assert isinstance(it, Generator)
 
 
 def test_sentence_iterator_manually_using_next(sentence: Sentence) -> None:
