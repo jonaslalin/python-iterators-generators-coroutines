@@ -1,5 +1,5 @@
 import re
-from typing import List
+from typing import Iterator, List
 
 from typing_extensions import Self
 
@@ -10,7 +10,7 @@ class Sentence:
     def __init__(self, text: str) -> None:
         self.words = re.findall(r"\w+", text)
 
-    def __iter__(self) -> "SentenceIterator":
+    def __iter__(self) -> Iterator[str]:
         return SentenceIterator(self.words)
 
 
