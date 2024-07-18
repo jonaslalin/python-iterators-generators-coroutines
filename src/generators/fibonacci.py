@@ -1,15 +1,16 @@
+from itertools import takewhile
 from typing import Iterator, Optional
 
 
-def fib_v1() -> Iterator[int]:
+def fib_forever() -> Iterator[int]:
     a, b = 0, 1
     while True:
         yield a
         a, b = b, a + b
 
 
-def fib_v2(first: Optional[int] = None, offset: int = 0) -> Iterator[int]:
-    if first is not None:
-        yield first
-    gen_obj = (f + offset for f in fib_v1())
-    yield from gen_obj
+def fib(n: Optional[int] = None) -> Iterator[int]:
+    if n is None:
+        return fib_forever()
+    gen_obj = (x for i, x in takewhile(lambda i_x: i_x[0] < n, enumerate(fib_forever())))
+    return gen_obj

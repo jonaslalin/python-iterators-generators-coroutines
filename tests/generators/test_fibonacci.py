@@ -1,8 +1,12 @@
-from generators.fibonacci import fib_v1, fib_v2
+from typing import List
+
+import pytest
+
+from generators.fibonacci import fib
 
 
-def test_fib_v1() -> None:
-    it = fib_v1()
+def test_fib_forever() -> None:
+    it = fib()
     assert next(it) == 0
     assert next(it) == 1
     assert next(it) == 1
@@ -10,11 +14,17 @@ def test_fib_v1() -> None:
     assert next(it) == 3
 
 
-def test_fib_v2() -> None:
-    it = fib_v2(first=100, offset=2)
-    assert next(it) == 100
-    assert next(it) == 0 + 2
-    assert next(it) == 1 + 2
-    assert next(it) == 1 + 2
-    assert next(it) == 2 + 2
-    assert next(it) == 3 + 2
+@pytest.mark.parametrize(
+    ("n", "expected"),
+    [
+        (-1, []),
+        (0, []),
+        (1, [0]),
+        (2, [0, 1]),
+        (3, [0, 1, 1]),
+        (4, [0, 1, 1, 2]),
+        (5, [0, 1, 1, 2, 3]),
+    ],
+)
+def test_fib(n: int, expected: List[int]) -> None:
+    assert list(fib(n)) == expected
