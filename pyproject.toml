@@ -33,6 +33,7 @@ source_pkgs = [
     "iterators",
     "generators",
     "coroutines",
+    "dependencyinjection",
 ]
 
 [tool.coverage.paths]
@@ -155,6 +156,7 @@ commands =
     python -m mypy -p iterators
     python -m mypy -p generators
     python -m mypy -p coroutines
+    python -m mypy -p dependencyinjection
     python -m mypy --explicit-package-bases tests/
 
 [testenv:ruffformat]

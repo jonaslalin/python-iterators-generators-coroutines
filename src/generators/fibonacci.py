@@ -14,3 +14,13 @@ def fib(n: Optional[int] = None) -> Iterator[int]:
         return fib_forever()
     gen_obj = (x for i, x in takewhile(lambda i_x: i_x[0] < n, enumerate(fib_forever())))
     return gen_obj
+
+
+class FibIterable:
+    n: Optional[int]
+
+    def __init__(self, n: Optional[int] = None) -> None:
+        self.n = n
+
+    def __iter__(self) -> Iterator[int]:
+        return fib(self.n)
